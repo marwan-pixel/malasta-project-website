@@ -13,6 +13,18 @@
   }
 }
 
+.active-link {
+  @apply text-primary;
+}
+
+.swiper-pagination-bullet {
+  @apply bg-slate-500;
+}
+
+.swiper-pagination-bullet-active {
+  @apply bg-primary;
+}
+
 .hamburger-line {
   @apply w-[30px] h-[2px] my-2 block bg-primary;
 }

@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
-import Navbar from "./components/Navbar";
-import Home from "./components/Home";
+import Navbar from "./components/Fragments/Navbar";
+import Home from "./components/pages/Home";
+import Footer from "./components/Fragments/Footer";
 import "./App.css";
-
+import { Route, Routes } from "react-router-dom";
+import Rental from "./components/pages/Rental";
+import Catalog from "./components/pages/Catalog";
 function App() {
   const [scroll, setScroll] = useState(false);
   const handleScroll = () => {
@@ -25,7 +28,13 @@ function App() {
   return (
     <div className="font-roboto " onScroll={handleScroll}>
       <Navbar scroll={scroll} />
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/rental" element={<Rental />} />
+        <Route path="/catalog" element={<Catalog />} />
+      </Routes>
+
+      <Footer />
     </div>
   );
 }
