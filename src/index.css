@@ -44,3 +44,15 @@
 .navbar-fixed {
   @apply fixed z-[9999] bg-white;
 }
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-out {
+  opacity: 0;
+  transform: translateY(1rem);
+}
+.transition-all {
+  transition: all 0.3s ease-in-out;
+}

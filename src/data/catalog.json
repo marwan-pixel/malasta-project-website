@@ -1,0 +1,52 @@
+[
+  {
+    "name": "Grey Carrier",
+    "imgUrl": "carrier-grey.jpg",
+    "category": "Carrier"
+  },
+  {
+    "name": "Blue Carrier",
+    "imgUrl": "carrier-blue-estate.jpg",
+    "category": "Carrier"
+  },
+  {
+    "name": "Black Carrier",
+    "imgUrl": "carrier-black.jpg",
+    "category": "Carrier"
+  },
+  {
+    "name": "Red Carrier",
+    "imgUrl": "carrier-red.jpg",
+    "category": "Carrier"
+  },
+  {
+    "name": "Green Carrier",
+    "imgUrl": "carrier-green.jpg",
+    "category": "Carrier"
+  },
+  {
+    "name": "Tent Black Orange",
+    "imgUrl": "tent-black-orange.jpg",
+    "category": "Tent"
+  },
+  {
+    "name": "Tent Blue",
+    "imgUrl": "tent-blue.jpg",
+    "category": "Tent"
+  },
+  {
+    "name": "Tent Slate Blue",
+    "imgUrl": "tent-slate-blue.jpg",
+    "category": "Tent"
+  },
+  {
+    "name": "Tent White Green",
+    "imgUrl": "tent-white-green.jpg",
+    "category": "Tent"
+  },
+  {
+    "name": "Tent Grey Blue",
+    "imgUrl": "tent-grey-blue.jpg",
+    "category": "Tent"
+  }
+]

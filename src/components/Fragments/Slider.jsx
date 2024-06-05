@@ -1,23 +1,46 @@
-import { React, useState } from "react";
-import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
+import { React, useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import Button from "../Elements/Button/Index";
 import "swiper/swiper-bundle.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Slider({ navigation, children, breakpoint }) {
   const [swiper, setSwiper] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const totalSlide = 10;
+  const [slidesPerView, setSlidesPerView] = useState(0);
+  const totalSlides = 10;
+  const navigate = useNavigate();
 
   const handleSlideChange = (swiper) => {
     setCurrentIndex(swiper.activeIndex);
   };
+
+  useEffect(() => {
+    const updateSlidesPerView = () => {
+      if (window.innerWidth < 768) {
+        setSlidesPerView(1);
+      } else if (window.innerWidth < 970) {
+        setSlidesPerView(2);
+      } else {
+        setSlidesPerView(3);
+      }
+    };
+
+    window.addEventListener("resize", updateSlidesPerView);
+    updateSlidesPerView(); // Initial call to set the correct slidesPerView
+
+    return () => {
+      window.removeEventListener("resize", updateSlidesPerView);
+    };
+  }, []);
+  const maxIndex = totalSlides - slidesPerView;
   return (
     <div className="catalog-items mt-10 flex items-center justify-between mb-10">
       {navigation && (
         <Button
           styled={
-            "swiper-button-prev-custom disabled:opacity-25 rounded-full bg-transparent active:bg-primary disabled:bg-white group py-0"
+            "swiper-button-prev-custom disabled:opacity-25 rounded-full bg-transparent disabled:bg-white group py-0 hover:bg-white"
           }
           s
           disabled={currentIndex == 0}
@@ -31,7 +54,7 @@ export default function Slider({ navigation, children, breakpoint }) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="size-10 stroke-primary group-active:stroke-white group-disabled:stroke-primary"
+            className="size-8 md:size-16 stroke-primary group-active:stroke-white group-disabled:stroke-primary group-hover:stroke-[#213526]"
           >
             <path
               strokeLinecap="round"
@@ -58,17 +81,19 @@ export default function Slider({ navigation, children, breakpoint }) {
           ...breakpoint,
         }}
       >
-        {[...Array(totalSlide)].map((_, index) => (
+        {[...Array(totalSlides)].map((_, index) => (
           <SwiperSlide key={index}>{children}</SwiperSlide>
         ))}
       </Swiper>
       {navigation && (
         <Button
-          styled="swiper-button-next-custom disabled:opacity-25 rounded-full bg-transparent active:bg-primary disabled:bg-white group py-0"
-          disabled={currentIndex == totalSlide - 1}
+          styled={`swiper-button-next-custom disabled:opacity-25 bg-transparent hover:bg-white disabled:bg-white group py-0 mt-12`}
           onclick={() => {
-            console.log(currentIndex);
+            console.log(slidesPerView);
             if (swiper) swiper.slideNext();
+            if (currentIndex >= maxIndex) {
+              navigate("/catalog");
+            }
           }}
         >
           <svg
@@ -77,7 +102,7 @@ export default function Slider({ navigation, children, breakpoint }) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-10 stroke-primary group-active:stroke-white group-disabled:stroke-primary"
+            className="size-8 md:size-16 stroke-primary group-active:stroke-white rounded-full group-disabled:stroke-primary group-hover:stroke-[#213526]"
           >
             <path
               strokeLinecap="round"
@@ -85,6 +110,13 @@ export default function Slider({ navigation, children, breakpoint }) {
               d="m8.25 4.5 7.5 7.5-7.5 7.5"
             />
           </svg>
+          <p
+            className={`text-primary transition-all duration-300 ${
+              currentIndex >= maxIndex ? "fade-in" : "fade-out"
+            }`}
+          >
+            View More
+          </p>
         </Button>
       )}
     </div>

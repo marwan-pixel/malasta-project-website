@@ -14,18 +14,19 @@ export default function Navbar({ scroll }) {
       }`}
     >
       <div className="container ">
-        <div className="flex items-center justify-between relative ">
+        <div className="flex items-center justify-between relative">
           <div className="px-5">
-            <h1 className="sm:text-[1.7rem] text-primary text-xl font-semibold font-inter block py-6">
-              Malasta Adventure
+            <h1 className="sm:text-[1.7rem] leading-6 sm:leading-7 text-primary text-xl font-bold font-inter block py-6 uppercase">
+              Malasta <br />
+              Adventure
             </h1>
           </div>
-          <div className="flex item-center px-5">
+          <div className="flex items-center px-5">
             <button
               id="hamburger"
               name="hamburger"
               type="button"
-              className={`block right-4 bottom-4 absolute z-10 lg:hidden ${
+              className={`block right-4 bottom-4 absolute z-10 lg:hidden mb-3 ${
                 hamburgerClick ? "hamburger-active" : ""
               }`}
               onClick={() => {

@@ -181,7 +181,7 @@ export default function Home() {
                       Saepe, temporibus.
                     </p>
                   </div>
-                  <Button>Detail Produk</Button>
+                  <Button styled={"mt-5"}>Detail Produk</Button>
                 </Card>
               </Slider>
             </div>
@@ -244,7 +244,7 @@ export default function Home() {
                 </h1>
                 <div className="h-1  bg-primary w-6 md:w-12 mt-2 md:mt-3 "></div>
               </div>
-              <div className="testimonial-contents mt-10 ">
+              <div className="testimonial-contents mt-10">
                 <Slider
                   navigation={false}
                   breakpoint={{
@@ -259,7 +259,7 @@ export default function Home() {
                     },
                   }}
                 >
-                  <Card>
+                  <Card styled={" mb-10"}>
                     <p className="md:text-xl text-lg mt-5">
                       Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                       Delectus dicta modi enim illum. Quia, exercitationem unde
